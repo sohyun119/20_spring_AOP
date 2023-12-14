@@ -1,0 +1,38 @@
+# AOP 구현
+	
+			1) pom.xml 파일에 AOP 관련 dependency 추가
+			   - aspectjrt는 pom.xml에 이미 존재하므로  aspectjweaver , spring-aop만 추가
+			
+				<!-- AspectJ -->
+				<dependency>
+					<groupId>org.aspectj</groupId>
+					<artifactId>aspectjrt</artifactId>
+					<version>${org.aspectj-version}</version>
+				</dependency>	
+				
+				<dependency>
+				   <groupId>org.aspectj</groupId>
+				   <artifactId>aspectjweaver</artifactId>
+				   <version>1.6.11</version>
+				 </dependency>
+			
+			   	<dependency>
+				  <groupId>org.springframework</groupId>
+				  <artifactId>spring-aop</artifactId>
+				  <version>${org.springframework-version}</version>
+			    </dependency>
+			
+			2) servlet-context.xml 파일에 aop autoproxy 설정 적용
+			
+				xmlns:aop="http://www.springframework.org/schema/aop"							
+				http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
+			
+				<aop:aspectj-autoproxy />
+			
+			
+			3) Advice 클래스에 @Component 및 @Aspect 어노테이션 지정
+				
+				@Component
+				@Aspect
+			
+			4) Advice 적용
