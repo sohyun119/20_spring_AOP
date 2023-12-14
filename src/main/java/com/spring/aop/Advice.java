@@ -6,9 +6,11 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 
@@ -120,8 +122,19 @@ import org.springframework.stereotype.Component;
 @Component
 public class Advice {
 	
+	
+	@Pointcut("execution(public void com.spring.aop.*.work())") // 중복되는 execution 명시자를 작성한다. *아래 execution에서 사용가능
+	public void abcd () {
+		//특정의미가 없다. 
+	}
+	
+	
+	/*
+	 * Advice에 정의된 메서드는 return 타입이 void밖에 안된다. 
+	 */
+	
 	// 메서드 호출 전
-	@Before("execution(public void com.spring.aop.*.work())")
+	@Before("abcd()")
 	public void beforeWork() {
 		System.out.println("(before)출근한다.");
 	}
@@ -163,6 +176,11 @@ public class Advice {
 	}
 	
 	
+	//타겟팅 메서드에서 오류 발생 후 
+	@AfterThrowing("execution(public void com.spring.aop.Boss.getError())")
+	public void afterThrowingGetError() {
+		System.out.println("(오류발생 후) 메서드 호출");
+	}
 	
 	
 	

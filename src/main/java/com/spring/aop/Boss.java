@@ -22,6 +22,9 @@ public class Boss {
 		
 	}
 	
+	public void getError() {
+		//System.out.println(0/0);
+	}
 	
 	
 }
