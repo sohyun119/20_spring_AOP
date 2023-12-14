@@ -122,7 +122,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Advice {
 	
-	
+	/*
 	@Pointcut("execution(public void com.spring.aop.*.work())") // 중복되는 execution 명시자를 작성한다. *아래 execution에서 사용가능
 	public void abcd () {
 		//특정의미가 없다. 
@@ -134,6 +134,7 @@ public class Advice {
 	 */
 	
 	// 메서드 호출 전
+	/*
 	@Before("abcd()")
 	public void beforeWork() {
 		System.out.println("(before)출근한다.");
@@ -181,7 +182,7 @@ public class Advice {
 	public void afterThrowingGetError() {
 		System.out.println("(오류발생 후) 메서드 호출");
 	}
-	
+	*/
 	
 	
 	
