@@ -18,10 +18,9 @@ public class Employee {
 		}
 	}
 	
-	public void getInfo(String title, int salary) {
+	
+	public void getInfo(String title , int salary) {
 		
 	}
-	
-	
 	
 }

@@ -13,7 +13,6 @@ import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
-
 /*
 
 
@@ -122,52 +121,53 @@ import org.springframework.stereotype.Component;
 @Component
 public class Advice {
 	
+	
+	/* advice에 정의된 메서드는 return을 사용할 수 없다. */
+	
 	/*
-	@Pointcut("execution(public void com.spring.aop.*.work())") // 중복되는 execution 명시자를 작성한다. *아래 execution에서 사용가능
-	public void abcd () {
-		//특정의미가 없다. 
+	  
+	@Pointcut("execution(public void com.spring.aop.*.work())") // 중복되는 execution명시자를 작성한다.
+	public void abcde() {
+		// 특정의미가 없다.
 	}
 	
-	
-	/*
-	 * Advice에 정의된 메서드는 return 타입이 void밖에 안된다. 
-	 */
-	
-	// 메서드 호출 전
-	/*
-	@Before("abcd()")
+	// 메서드 호출전
+	@Before("abcde()")
 	public void beforeWork() {
 		System.out.println("(before)출근한다.");
 	}
 	
-	// 메서드 호출 후
-	@After("execution(public void com.spring.aop.*.work())")
+	// 메서드 호출후
+	@After("abcde()")
 	public void afterWork() {
 		System.out.println("(after)퇴근한다.\n");
 	}
 	
-	// 메서드 호출 전 후 
+	
+	// 메서드 호출 전후
 	@Around("execution(* getWorkingTime())")
 	public void aroundGetWorkingTime(ProceedingJoinPoint pjp) throws Throwable {
 		
-		// 메서드 호출 전
-		System.out.println("\n=============================\n");
+		// 메서드 호출전
+		System.out.println("\n======================\n");
 		long startTime = System.currentTimeMillis();
 		
 		// ProceedingJoinPoint 객체의 proceed(); 메서드를 호출하여 타겟팅 메서드를 실행한다.
 		pjp.proceed();
 		
-		// 메서드 호출 후 
+		// 메서드 호출후
 		long endTime = System.currentTimeMillis();
 		System.out.println("업무 소요 시간 : " + (endTime - startTime) / 1000.0 + "초");
-		System.out.println("=============================\n");
-		
+		System.out.println("======================\n");
+	
 	}
 	
-	// 타겟팅 메서드가 성공적으로 실행된 후 (오류시 실행 X)
+	
+	// 타겟팅메서드가 성공적으로 실행된 후
 	@AfterReturning("execution(public void com.spring.aop.*.getInfo(..))")
-	public void afterReturningGetInfo(JoinPoint jp) {// JoinPoint를 통하여 메서드의 파라메타를 전달받을 수 있다.
-
+	//          import org.aspectj.lang.JoinPoint;
+	public void afterReturningGetInfo(JoinPoint jp) { // JoinPoint를 통하여 메서드의 파라메타를 전달받을 수 있다.
+		
 		System.out.println("1 : " + Arrays.toString(jp.getArgs()));		// 메서드의 파라미터를 확인
 		System.out.println("2 : " + jp.getKind());						// 메서드의 종류 확인
 		System.out.println("3 : " + jp.getSignature().getName());		// 어드바이즈메서드에 대한 설명(description) 반환
@@ -177,14 +177,13 @@ public class Advice {
 	}
 	
 	
-	//타겟팅 메서드에서 오류 발생 후 
+	// 타겟팅 메서드에서 오류 발생 후
 	@AfterThrowing("execution(public void com.spring.aop.Boss.getError())")
 	public void afterThrowingGetError() {
-		System.out.println("(오류발생 후) 메서드 호출");
+		System.out.println("(오류발생후) 메서드 호출");
 	}
+	
 	*/
-	
-	
 	
 	
 }

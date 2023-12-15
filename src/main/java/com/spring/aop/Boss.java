@@ -18,13 +18,14 @@ public class Boss {
 		}
 	}
 	
-	public void getInfo(String title, int salary) {
+	public void getInfo(String title , int salary) {
 		
 	}
 	
 	public void getError() {
-		//System.out.println(0/0);
+		System.out.println(0/0);
 	}
+	
 	
 	
 }
